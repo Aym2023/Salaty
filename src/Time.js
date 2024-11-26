@@ -1,16 +1,32 @@
-function Time({prayers}) {
+function Time({prayers, city}) {
+   const now = new Date();
+
+   const options = {
+       minute: 'numeric',
+       hour: 'numeric',
+       day: 'numeric',
+       month: 'numeric',
+       year: 'numeric',
+       weekday: 'long',
+   };
+
+   const nowIntl = new Intl.DateTimeFormat('en-GB', options).format(now);
+   
    return (
    <div>
-     <p>Sunrise: {prayers.Sunrise}</p>
-     <p>Fajr: {prayers.Fajr}</p>
-     <p>Dhur: {prayers.Dhuhr}</p>
-     <p>Asr: {prayers.Asr}</p>
-     <p>Maghrib: {prayers.Maghrib}</p>
-     <p>Sunset: {prayers.Sunset}</p>
-     <p>Isha: {prayers.Isha}</p>
-     <p>Midnight: {prayers.Midnight}</p>
-     <p>Fajr: {prayers.Fajr}</p>
-     <p>Dhur: {prayers.Dhuhr}</p>
+    <h2>Prayer Timings</h2>
+     <h3>
+      <span>{`${city.timezone},`}</span>  
+      <span>{nowIntl}</span> 
+       </h3>
+     <p>Sunrise: <span>{prayers.Sunrise}</span></p>
+     <p>Fajr: <span>{prayers.Fajr}</span></p>
+     <p>Dhuhr: <span>{prayers.Dhuhr}</span></p>
+     <p>Asr: <span>{prayers.Asr}</span></p>
+     <p>Maghrib: <span>{prayers.Maghrib}</span></p>
+     <p>Sunset: <span>{prayers.Sunset}</span></p> 
+     <p>Isha: <span>{prayers.Isha}</span></p>
+     <p>Midnight: <span>{prayers.Midnight}</span></p>
       </div>
       );
 }

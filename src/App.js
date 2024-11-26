@@ -8,6 +8,7 @@ const Url =
 function App () {
   const [prayers, setPrayers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [city, setCity] = useState([]);
 
   useEffect(function() {
     async function fetchPrayersTimes() {
@@ -15,16 +16,15 @@ function App () {
         setIsLoading(true);
 
         const res = await fetch(Url);
-
         if(!res) throw new Error('Timing could not load');
-
         const data = await res.json();
+
         setPrayers(data.data.timings);
-        console.log(data);
+        setCity(data.data.meta);
       }
-      catch(err) {
+      catch (err) {
         console.log('Data Not Found');
-      }finally {
+      } finally {
         setIsLoading(false);
       }
     }
@@ -34,8 +34,13 @@ function App () {
 
   return (
   <ul>
-  {/* {prayers?.map((prayer) => <Time prayer={prayer} />)} */}
-  {<Time prayers={prayers} />}
+    <li>
+    {<Time 
+    prayers={prayers} 
+    city={city}
+    id={prayers.id} 
+    />}
+    </li>
   </ul>
   );
 }
