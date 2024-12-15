@@ -1,6 +1,6 @@
-
 import {useState,  useEffect } from "react";
 import Time from './Time';
+import Loader from "./Loader";
 
 const Url =
 ' https://api.aladhan.com/v1/timingsByAddress/19-02-2024?address=Cairo,EGY&method=5';
@@ -30,18 +30,21 @@ function App () {
     }
     fetchPrayersTimes();
 
-  }, [prayers]);
+  }, [prayers.id]);
 
   return (
-  <ul>
-    <li>
-    {<Time 
-    prayers={prayers} 
-    city={city}
-    id={prayers.id} 
-    />}
-    </li>
-  </ul>
+      <ul>
+      <li>
+      {isLoading ? <Loader/> :
+      <Time 
+       prayers={prayers} 
+       city={city}
+       id={prayers.id} 
+       />
+     }
+      </li>
+      </ul>
+  
   );
 }
 
