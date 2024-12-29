@@ -1,51 +1,21 @@
-import {useState,  useEffect } from "react";
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
+
 import Time from './Time';
-import Loader from "./Loader";
+import Qibla from './Qibla';
+import HomePage from './HomePage';
+import PageNotFound from './PageNotFound';
 
-const Url =
-' https://api.aladhan.com/v1/timingsByAddress/19-02-2024?address=Cairo,EGY&method=5';
-
-function App () {
-  const [prayers, setPrayers] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [city, setCity] = useState([]);
-
-  useEffect(function() {
-    async function fetchPrayersTimes() {
-      try {
-        setIsLoading(true);
-
-        const res = await fetch(Url);
-        if(!res) throw new Error('Timing could not load');
-        const data = await res.json();
-
-        setPrayers(data.data.timings);
-        setCity(data.data.meta);
-      }
-      catch (err) {
-        console.log('Data Not Found');
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    fetchPrayersTimes();
-
-  }, [prayers.id]);
-
-  return (
-      <ul>
-      <li>
-      {isLoading ? <Loader/> :
-      <Time 
-       prayers={prayers} 
-       city={city}
-       id={prayers.id} 
-       />
-     }
-      </li>
-      </ul>
-  
-  );
-}
+function App() {
+    return (
+      <BrowserRouter>
+      <Routes>
+      <Route index element={<HomePage />}/>
+      <Route path='time' element={<Time />}/>
+      <Route path='qibla' element={<Qibla />}/>
+      <Route path='*' element={<PageNotFound />}/>
+      </Routes>
+      </BrowserRouter>
+    );
+  }
 
 export default App;

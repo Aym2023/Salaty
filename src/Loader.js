@@ -3,7 +3,6 @@ function Loader() {
         <div className='loader'>
             <div className='loader'>
             </div>
-
         </div>
     );
 }
