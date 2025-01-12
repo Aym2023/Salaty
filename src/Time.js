@@ -5,7 +5,7 @@ import Spinner from "./Spinner";
 const Container = styled.html`
 background-color:#FFC0CB;
 height: 100vh;
-// color: white;
+//  color: white;
 `;
 
 const PrayerName = styled.div`  
