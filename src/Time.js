@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import Spinner from "./Spinner";
 
 const Container = styled.html`
-background-color:#FFC0CB;
+// background-color:#FFC0CB;
 height: 100vh;
-//  color: white;
+ color: white;
 `;
 
 const PrayerName = styled.div`  
@@ -53,6 +53,7 @@ function Time() {
          if(!response) throw new Error('Cities could not load');
 
          const data = await res.json();
+         console.log(data);
          const dataCity = await response.json();
 
         setPrayers(data.data.timings);

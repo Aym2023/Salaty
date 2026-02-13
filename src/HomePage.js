@@ -39,10 +39,12 @@ const Heading2 = styled.h2`
   
 function HomePage() {
     return (
+
         <Main>
-        <PageNav />
+      <PageNav />
 
           <Section>
+
           <Heading1>
          Salat is the main base in Islam
           <br />
@@ -52,7 +54,7 @@ function HomePage() {
         Salat is one of the five pillars of Islam and is a fundamental act of worship for Muslims
          </Heading2>
         </Section>
-        </Main>
+        // </Main>
     );
 }
 

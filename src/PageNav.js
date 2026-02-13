@@ -5,19 +5,20 @@ import { styled }  from 'styled-components';
    display: flex;
    align-items: center;
    justify-content: space-between;
-   color:#242a2e;
- `;
+   color: #242a2e;
+  `;
 
   const UL = styled.ul`
     list-style: none;
     display: flex;
-    align-items: center;
+    justify-content: end;
+    align-items: start;
     gap: 4rem;
   `;
 
   const LI = styled.li`
-    font-size: 3rem;
-    color: #0000;
+    font-size: 3.2rem;
+    color: yellow;
   `;
 
 

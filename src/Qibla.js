@@ -1,8 +1,9 @@
  import {useState,  useEffect } from "react";
  import styled from 'styled-components';
- import Spinner from "./Spinner";
 
-    
+ import Spinner from "./Spinner";
+// import MyMapComponent from "./MyMapComponent";
+
  const Url = 'http://api.aladhan.com/v1/qibla/25.4106386/51.1846025';
 
 
@@ -18,22 +19,24 @@ const FormRow = styled.div`
 `;
 
 
+
     function Qibla() {
     const [findQibla, setFindQibla] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-
+    
   useEffect(function() {
     async function fetchQibla() {
        try {
           setIsLoading(true);
 
-        const res = await fetch(Url);
-         if(!res) throw new Error('Timing could not load');
+         const res = await fetch(Url);
+         if(!res) throw new Error('Timing could not been loaded');
 
           const data = await res.json();
 
           setFindQibla(data.data);
           console.log(data.data);
+
        }
        catch (err) {
           console.log('Data Not Found');
@@ -51,19 +54,20 @@ const FormRow = styled.div`
         <>
         <FormRow>
          Latitude: 
-          <span>{findQibla.latitude}</span>
-          </FormRow>
+        <span>{findQibla.latitude}</span>
+         </FormRow>
 
-        <FormRow>
-          Longitude: 
+         <FormRow>
+           Longitude: 
           <span>{findQibla.longitude}</span>
           </FormRow>
 
-        <FormRow>
+         <FormRow>
           Direction: 
           <span>{findQibla.direction}</span>
-          </FormRow>
-          </>
+           </FormRow>
+           {/* <MyMapComponent /> */}
+           </>
         );
 }
 
